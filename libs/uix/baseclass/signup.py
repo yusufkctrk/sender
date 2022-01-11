@@ -13,3 +13,4 @@ class Signup_Screen(MDScreen):
             "password": password
         }
         CreateUser.userCreatingWithFirebase(user)
+        func.change_screen("home")
