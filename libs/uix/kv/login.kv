@@ -1,0 +1,50 @@
+<Login_Screen>:
+    name: "login"
+
+    MDLabel:
+        text:f"[color=#3c40c6] {app.APP_NAME}[/color] [color=#0fbcf9][font=Icons]{md_icons['message']}[/font][/color]"
+        markup:True
+        halign: "center"
+        pos_hint: {"center_y": .88}
+        font_style: "H3"
+
+    MDLabel:
+        text: f"[color=#808e9b][size=16sp]Gerçek zamanlı mesajlaşma uygulaması[/size] [/color]"
+        halign: "center"
+        markup:True
+        pos_hint: {"center_y":.8}
+        font_style: "Caption"
+        
+    MDTextField:
+        id:username_input
+        hint_text: "Kullanıcı Adı"
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
+        size_hint: .75,0.085
+        # mode: "rectangle"
+    MDTextField:
+        id:password_input
+        hint_text: "Şifre"
+        pos_hint: {"center_x":0.5, "center_y":0.57}
+        size_hint: .75,0.085
+        password: True
+        # mode: "rectangle"
+
+    MDFillRoundFlatButton:
+        text:f"[size=18sp]Giriş [font=Icons]{md_icons['login']}[/font][/size]"
+        markup:True
+        halign:"center"
+        pos_hint: {"center_x": 0.5, "center_y":0.4}
+        size_hint: .7,0.05
+        on_release: root.login(app.screen_manager, username_input.text,password_input.text)
+    
+    MDTextButton:
+        text: "Şifremi Unuttum"
+        pos_hint: {"center_x":0.5, "center_y":0.35}
+        on_release: app.screen_manager.change_screen("forgot")
+        border_radius:25
+
+    MDTextButton:
+        text: f"[color=#485460]Bir hesabın yok mu? [/color] [color=#3c40c6]Hemen Oluştur[/color]"
+        markup: True
+        pos_hint: {"center_x":0.5, "center_y":0.15}
+        on_release: app.screen_manager.change_screen("signup")

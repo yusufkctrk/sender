@@ -1,0 +1,56 @@
+<Signup_Screen>:
+    name: "signup"
+    MDToolbar:
+        id:profile_bar
+        title: "Kayıt Ol"
+        size_hint: 1,0.08
+        pos_hint: {"center_y":.965}
+        left_action_items: [ ["arrow-left", lambda x:app.screen_manager.change_screen("login",False)]]
+        elevation: 5
+
+    MDLabel:
+        text:f"[color=#3c40c6] {app.APP_NAME}[/color] [color=#0fbcf9][font=Icons]{md_icons['message']}[/font][/color]"
+        markup:True
+        halign: "center"
+        pos_hint: {"center_y": .83}
+        font_style: "H3"
+
+    MDLabel:
+        text: f"[color=#808e9b][size=16sp]Gerçek zamanlı mesajlaşma uygulaması[/size] [/color]"
+        halign: "center"
+        markup:True
+        pos_hint: {"center_y":.75}
+        font_style: "Caption"
+
+    MDTextField:
+        id:mail_input
+        hint_text: "Email"
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
+        size_hint: .75,0.08
+        # mode: "rectangle"
+    MDTextField:
+        id:username_input
+        hint_text: "Kullanıcı Adı"
+        pos_hint: {"center_x":0.5, "center_y":0.57}
+        size_hint: .75,0.08
+        # mode: "rectangle"
+
+    MDTextField:
+        id:password_input
+        hint_text: "Şifre"
+        pos_hint: {"center_x":0.5, "center_y":0.49}
+        size_hint: .75,0.08
+        password: True
+        # mode: "rectangle"
+
+    MDFillRoundFlatButton:
+        text:f"[size=18sp]Kayıt Ol [font=Icons]{md_icons['account-arrow-right-outline']}[/font][/size]"
+        pos_hint: {"center_x": 0.5, "center_y":0.31}
+        size_hint: .7,0.05
+        on_release: root.userCreate(app.screen_manager,mail_input.text,username_input.text,password_input.text)
+
+    MDTextButton:
+        text: f"[color=#575fcf]Bir hesabım var[/color]"
+        markup: True
+        pos_hint: {"center_x":0.5, "center_y":0.15}
+        on_release: app.screen_manager.change_screen("login",False)
