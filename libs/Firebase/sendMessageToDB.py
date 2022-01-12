@@ -1,12 +1,15 @@
+import datetime
+
 from libs.Firebase.firebase_config import database
+from libs.uix.Constants.Params import Params
+from libs.uix.User.ProfileData import ProfileData
 
 
 def sendMessageToDB(message):
     messageData = {
-        "owner": "dfkgbdf",
-        "sent_to": "dfkjgdbf",
-        "hasSeen": "jdsnfkj",
-        "sent_time": "dfkgjb",
-        "message": message
+        Params.owner: ProfileData.currentUser[Params.username],
+        Params.sentTo: "dfkjgdbf",
+        Params.sentTime: str(datetime.datetime.now()),
+        Params.message: message
     }
-    database.child("John").child("messages").child("mymessages").child("message2").push(message)
+    database.child("messages").child(ProfileData.currentUser[Params.username]).child("yusufkocaturk").push(messageData)

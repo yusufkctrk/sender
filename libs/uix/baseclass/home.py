@@ -1,3 +1,8 @@
+from libs.uix.Constants.Params import Params
+from libs.uix.User.ProfileData import ProfileData
+from libs.uix.baseclass.chat_room import Chat_Room_Screen
+from libs.uix.baseclass.root import Root
+
 from main_imports import ImageLeftWidget, MDScreen, TwoLineAvatarListItem
 from libs.applibs import utils
 
@@ -5,19 +10,27 @@ utils.load_kv("home.kv")
 
 
 class Home_Screen(MDScreen):
+    username = ""
+    password = ""
+    mail = ""
 
-    def search_account(self, search_field):
-        """
-        this method use when search button pressed search_field
-        contain data in string that you want to search on Sender server
-        """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        for user in ProfileData.userList.values():
+            print(user)
+            twolineW = TwoLineAvatarListItem(text=user[Params.profileData][Params.fullname],
+                                             on_release=lambda x: Chat_Room_Screen.setPartnerUsername(self, user),
+                                             secondary_text=user[Params.profileData][Params.username])
+            twolineW.add_widget(ImageLeftWidget(source=user[Params.profileData][Params.profileUrl]))
+            self.ids.search_items.add_widget(twolineW)
 
-        # for dummy search item [------
+        def yonlendir(self, user):
+            root = Root()
+            root.changeScreen("signup")
 
-        twolineW = TwoLineAvatarListItem(text=f"{search_field}",
-                                         secondary_text=f"@{search_field}")
-        twolineW.add_widget(ImageLeftWidget(source="assets//img//Sender_icon.png"))
+            Chat_Room_Screen.setPartnerUsername(self, user)
 
-        self.ids.search_items.add_widget(twolineW)
-
-        # #  ----- ] end dummy search
+    def getUserData(self, userDict):
+        self.username = userDict[Params.username],
+        self.password = userDict[Params.password],
+        self.mail = userDict[Params.mail]
