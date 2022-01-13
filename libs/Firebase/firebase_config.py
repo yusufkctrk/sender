@@ -14,5 +14,3 @@ database = firebase.database()
 auth = firebase.auth()
 storage = firebase.storage()
 
-# update
-# remove

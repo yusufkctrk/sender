@@ -18,10 +18,7 @@ class Chat_Room_Screen(MDScreen):
         print("user" + str(username))
 
     def chat_textbox(self):
-        """
-            MDCard size change when MSGbox use multilines.
-            MDCard y axis size incress when MSGbox y axis size incress
-        """
+
         fixed_Y_size = self.ids.root_chatroom.size[1] / 3
         msg_textbox = self.ids.msg_textbox.size
         if msg_textbox[1] <= fixed_Y_size:
@@ -31,18 +28,13 @@ class Chat_Room_Screen(MDScreen):
 
     def send_msg(self, msg_data):
 
-        """
-            When send button use to send msg this function call
-            and clear MSGbox 
-        """
+
 
         text_msg = MDLabel(text=msg_data, halign="right")
 
         sizeX = self.ids.msg_textbox.size[0]
 
         sizeY = self.ids.msg_textbox.size[1] + 60
-        # ->> sizeY is equal to msg_textbox sizeY because text_msg sizeY not work 
-        # that's why i use msg_textbox is called 'Jugaad'
 
         msg_card = MDCard(
             orientation="vertical",

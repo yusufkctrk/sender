@@ -1,7 +1,6 @@
 <Chat_Room_Screen>:
     name: "chat_room"
     MDBoxLayout:
-        # md_bg_color: app.theme_cls.primary_color
         orientation:'vertical'
 
         MDToolbar:
@@ -10,11 +9,9 @@
             left_action_items: [["arrow-left", lambda x:app.screen_manager.change_screen("home",False)]]
             elevation: 5
         MDBoxLayout:
-            # md_bg_color: app.theme_cls.primary_color
             orientation:'vertical'
             MDBoxLayout:
                 id: root_chatroom
-                # md_bg_color: app.theme_cls.primary_color
                 orientation:'vertical'
                 ScrollView:
                     id: msg_scroll_view
