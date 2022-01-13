@@ -8,7 +8,7 @@ from libs.uix.User.ProfileData import ProfileData
 def sendMessageToDB(message):
     messageData = {
         Params.owner: ProfileData.currentUser[Params.username],
-        Params.sentTo: "dfkjgdbf",
+        Params.sentTo: "yusufkocaturk",
         Params.sentTime: str(datetime.datetime.now()),
         Params.message: message
     }

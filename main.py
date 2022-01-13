@@ -3,6 +3,8 @@
 if it's not android than app window size change in android phone size"""
 from kivy.utils import platform
 
+from libs.uix.User.ProfileData import ProfileData
+
 if platform != 'android':
     from kivy.config import Config
 
@@ -55,10 +57,12 @@ class SenderApp(MDApp):
         """
         # for dummy chats [------
         # self.change_screen("profile")
-        twolineW = TwoLineAvatarListItem(text=f"Sender",
-                                         secondary_text="@username",
+
+        twolineW = TwoLineAvatarListItem(text=f"Yusuf Kocatürk",
+                                         secondary_text="@yusufkocaturk",
                                          on_touch_up=self.chat_room)
-        twolineW.add_widget(ImageLeftWidget(source="assets//img//Sender_icon.png"))
+        twolineW.add_widget(ImageLeftWidget(
+            source="https://firebasestorage.googleapis.com/v0/b/python-project-cb18d.appspot.com/o/profile%2Fprofile.jpg?alt=media&token=a075a91e-6035-49bc-9f8f-1962c317a281"))
         self.screen_manager.get_screen("home").ids.chat_tab.add_widget(twolineW)
 
         #  ----- ] end dummy chats

@@ -1,12 +1,7 @@
 import datetime
-
-from libs.Firebase.firebase_config import database
 from libs.Firebase.sendMessageToDB import sendMessageToDB
-from libs.uix.Constants.Params import Params
-from libs.uix.User.ProfileData import ProfileData
 from main_imports import MDCard, MDLabel, MDScreen, MDSeparator
 from libs.applibs import utils
-from threading import Timer
 
 utils.load_kv("chat_room.kv")
 
@@ -18,21 +13,9 @@ class Chat_Room_Screen(MDScreen):
     def __init__(self, **kw):
         super().__init__(**kw)
 
-        def retrieveData():
-            messages = database.child(Params.messages).get()
-            for item in messages.each():
-                if ProfileData.currentUser[Params.username]:
-                    if item.key() == ProfileData.currentUser[Params.username]:
-                        pass
-            if self.run:
-                Timer(1, retrieveData).start()
-
-        retrieveData()
-
     def setPartnerUsername(self, username):
         self.partnerUsername = username
-        print(username)
-        g = getData()
+        print("user" + str(username))
 
     def chat_textbox(self):
         """

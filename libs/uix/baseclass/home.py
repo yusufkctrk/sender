@@ -1,3 +1,5 @@
+from kivy.uix.widget import Widget
+
 from libs.uix.Constants.Params import Params
 from libs.uix.User.ProfileData import ProfileData
 from libs.uix.baseclass.chat_room import Chat_Room_Screen
@@ -16,18 +18,19 @@ class Home_Screen(MDScreen):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
         for user in ProfileData.userList.values():
-            print(user)
             twolineW = TwoLineAvatarListItem(text=user[Params.profileData][Params.fullname],
-                                             on_release=lambda x: Chat_Room_Screen.setPartnerUsername(self, user),
-                                             secondary_text=user[Params.profileData][Params.username])
+
+                                             on_release=lambda x: yonlendir(self, user),
+                                             secondary_text=user[Params.profileData][
+                                                 Params.username])
             twolineW.add_widget(ImageLeftWidget(source=user[Params.profileData][Params.profileUrl]))
+
             self.ids.search_items.add_widget(twolineW)
 
         def yonlendir(self, user):
-            root = Root()
-            root.changeScreen("signup")
-
+            print(user)
             Chat_Room_Screen.setPartnerUsername(self, user)
 
     def getUserData(self, userDict):
