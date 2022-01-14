@@ -32,14 +32,11 @@ class Login_Screen(MDScreen):
                 }
                 ProfileData.currentUser = self.currentUser
                 Home_Screen.getUserData(self, self.currentUser)
-
-
-
-        else:
-            self.add_widget(MDLabel(
-                text=f"[color=#FF5733][size=16sp]Hatalı kullanıcı adı ya da şifre girdiniz.[/size] [/color]"
-                , halign="center"
-                , markup=True
-                , pos_hint={"center_y": .53}
-                , font_style="Caption"
-            ))
+            else:
+                self.add_widget(MDLabel(
+                    text=f"[color=#FF5733][size=16sp]Hatalı kullanıcı adı ya da şifre girdiniz.[/size] [/color]"
+                    , halign="center"
+                    , markup=True
+                    , pos_hint={"center_y": .53}
+                    , font_style="Caption"
+                ))
